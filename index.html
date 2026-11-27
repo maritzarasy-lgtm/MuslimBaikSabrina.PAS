@@ -245,16 +245,13 @@ body {
   padding: 30px 15px;
 }
 
-.container,
 .article {
-    width: 100%;
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 40px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(96, 34, 21, 0.10);
-    box-sizing: border-box;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 40px 50px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(96, 34, 21, 0.10);
 }
 
 .article-title {
@@ -350,25 +347,121 @@ body {
     font-size: 21px !important;
   }
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
 
-.gambar-artikel {
-    display: block;
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    margin: 20px auto;
+body {
+    background-color: #FAEBE8;
+    color: #3B140D;
+    line-height: 1.8;
+}
+
+.pembukaan {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 60px 50px;
+    background-color: #ffffff;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(96, 34, 21, 0.10);
+}
+
+.label {
+    display: inline-block;
+    background-color: #FAEBE8;
+    color: #AB3C26;
+    padding: 7px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.pembukaan h1 {
+    color: #862F1D;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.pembukaan h2 {
+    color: #D96A54;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.pembukaan p {
+    font-size: 16px;
+    color: #602215;
+    text-align: justify;
+    margin-bottom: 18px;
+}
+
+.garis {
+    width: 80px;
+    height: 4px;
+    background-color: #D96A54;
+    margin: 25px auto;
     border-radius: 10px;
 }
 
-  </style>
+.penutup {
+    color: #862F1D;
+    font-weight: 600;
+    font-style: italic;
+    text-align: center !important;
+    margin-top: 25px;
+}
+
+.tombol {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: #D96A54;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.tombol:hover {
+    background-color: #862F1D;
+}
+
+@media (max-width: 600px) {
+    .pembukaan {
+        margin: 25px 15px;
+        padding: 35px 25px;
+    }
+
+    .pembukaan h1 {
+        font-size: 28px;
+    }
+
+    .pembukaan h2 {
+        font-size: 17px;
+    }
+
+    .pembukaan p {
+        font-size: 14px;
+    }
+}
+</style>
 </head>
+
 <body>
+
 
   <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
   <header class="top-header">
     <a href="#" class="brand-wrapper">
       <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
-      <img src="logopink.png" alt="Logo MuslimBaik" class="brand-logo">
+     <img src="logopink.png" alt="Logo MuslimBaik" class="brand-logo">
 
       <!-- Teks Judul & Slogan -->
       <div class="brand-text">
@@ -380,9 +473,7 @@ body {
     <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
   </header>
 
-  
-      
- 
+	  
 	   <!-- Dropdown Kategori -->
       <li class="nav-item">
         <a href="#" class="nav-link">Kategori ▾</a>
@@ -395,7 +486,7 @@ body {
        
         </ul>
       </li>
-    <!-- Navigasi Utama -->
+ <!-- Navigasi Utama -->
   <nav class="navbar">
     <ul class="nav-menu">
       <li class="nav-item"><a href="shalat.html" class="nav-link">Beranda</a></li>
@@ -416,15 +507,49 @@ body {
   <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
   <main class="container">
     <h1>sholatlah sebelum di sholatkan</h1>
-   <center><img src="1.jpg" width="500" height="300"></center>
-    <p class="penjelasan-justify">
-      Strukturnavigasi di atas dirancang dengan menggunakan tag gambar standar (`&lt;img&gt;`) untuk logo situsnya. Dengan metode ini, Anda cukup menyediakan file gambar terpisah (misalnya format `.svg`, `.png`, atau `.jpg`) di dalam satu folder yang sama dan menamainya sesuai atribut `src="logo.svg"`.
+   <center><img src="depan.png" width="500" height="300"></center>
+    <body>
+
+<div class="pembukaan">
+
+    <div class="label">PANDUAN ISLAMI</div>
+
+    <h1>Selamat Datang di MuslimBaik</h1>
+
+    <h2>Mulai Langkah Menjadi Muslim yang Lebih Baik</h2>
+
+    <div class="garis"></div>
+
+    <p>
+        Menjadi muslim yang baik merupakan sebuah perjalanan untuk
+        terus belajar, memperbaiki diri, dan meningkatkan kualitas
+        ibadah kepada Allah SWT. Salah satu langkah penting dalam
+        perjalanan tersebut adalah memahami dan mengamalkan
+        tuntunan shalat dengan benar.
     </p>
 
-    <p class="penjelasan-justify">
-      Jika di kemudian hari Anda ingin mengubah atau mengedit logo tersebut, Anda tidak perlu mengubah kode HTML di atas. Cukup edit file gambar logonya atau ganti dengan file baru yang memiliki nama yang sama, maka logo pada tampilan web akan otomatis berubah.
+    <p>
+        Melalui MuslimBaik, kamu dapat mempelajari berbagai panduan
+        seputar ibadah shalat, mulai dari keutamaan shalat lima waktu,
+        dzikir setelah shalat, sifat shalat Nabi Muhammad SAW,
+        tata cara shalat, hingga 12 macam doa iftitah.
     </p>
-  </main>
+
+    <p>
+        Mari perkaya ilmu, sempurnakan ibadah, dan jadikan setiap
+        shalat sebagai langkah untuk semakin mendekatkan diri
+        kepada Allah SWT.
+    </p>
+
+    <p class="penutup">
+        Belajar, memahami, dan mengamalkan. Karena menjadi muslim
+        yang lebih baik dimulai dari diri sendiri.
+    </p>
+
+    <a href="keutamaan.html" class="tombol">Mulai Belajar</a>
+
+</div>
 
 </body>
 </html>
+  
