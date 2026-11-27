@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi MuslimBaik dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color: #ffffff;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #862F1D;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .btn-donasi {
+      background-color: #D96A54;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #D96A54;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color: #EAAB9F;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #862F1D;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #8A94ED;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #862F1D;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #d4af37;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #FEEBE7;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #FEEBE7;
+      color: #FEEBE7;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #D96A54;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #b8962e;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #862F1D;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #862F1D;
+      }
+      .dropdown-menu li a {
+        color: #862F1D;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+	* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+  background-color: #FAEBE8;
+  color: #3B140D;
+  line-height: 1.8;
+  padding: 30px 15px;
+}
+
+.article {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 40px 50px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(96, 34, 21, 0.10);
+}
+
+.article-title {
+  text-align: center;
+  color: #862F1D;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.article-subtitle {
+  text-align: center;
+  color: #AB3C26;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.divider {
+  width: 90px;
+  height: 4px;
+  background: #D96A54;
+  margin: 0 auto 35px;
+  border-radius: 10px;
+}
+
+.section {
+  margin-bottom: 35px;
+}
+
+.section h2 {
+  color: #862F1D;
+  font-size: 20px;
+  margin-bottom: 15px;
+  border-left: 4px solid #D96A54;
+  padding-left: 12px;
+}
+
+.section p {
+  font-size: 15px;
+  color: #602215;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+.arabic {
+  direction: rtl;
+  text-align: center !important;
+  font-family: 'Traditional Arabic', 'Noto Naskh Arabic', serif;
+  font-size: 25px !important;
+  line-height: 2.2;
+  color: #862F1D !important;
+  background: #FAEBE8;
+  padding: 22px 18px;
+  border-radius: 10px;
+  margin: 18px 0;
+}
+
+.translation {
+  background: #FFF7F5;
+  border-left: 3px solid #E28B79;
+  padding: 16px 20px;
+  border-radius: 5px;
+  font-style: italic;
+}
+
+.source {
+  text-align: center !important;
+  color: #AB3C26 !important;
+  font-size: 13px !important;
+  margin-top: 12px;
+}
+
+.closing {
+  text-align: center !important;
+  color: #862F1D !important;
+  font-weight: 600;
+  margin-top: 25px;
+}
+
+@media (max-width: 600px) {
+  .article {
+    padding: 25px 20px;
+  }
+
+  .article-title {
+    font-size: 23px;
+  }
+
+  .section h2 {
+    font-size: 18px;
+  }
+
+  .arabic {
+    font-size: 21px !important;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+    <img src="logopink.png" alt="Logo MuslimBaik" class="brand-logo">
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">MuslimBaik</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+   
+	   <!-- Dropdown Kategori -->
+      <li class="nav-item">
+        <a href="#" class="nav-link">Kategori ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">KEUTAMAAN SHOLAT</a></li>
+          <li><a href="#">SIFAT SHOLAT NABI</a></li>
+          <li><a href="#">TATA CARA SHOLAT</a></li>
+          <li><a href="#">12 DOA IFTITAH</a></li>
+          <li><a href="#">DZIKIR SETELAH SHOLAT</a></li>
+       
+        </ul>
+      </li>
+    <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="shalat.html" class="nav-link">Beranda</a></li>
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">KEUTAMAAN SHOLAT</a></li>
+     <li class="nav-item"><a href="sifat.html" class="nav-link">SIFAT SHOLAT NABI</a></li>
+      <li class="nav-item"><a href="tata.html" class="nav-link">TATA CARA SHOLAT</a></li>
+      <li class="nav-item"><a href="12.html" class="nav-link">12 DOA IFTITAH</a></li>
+	  <li class="nav-item"><a href="dzikir.html" class="nav-link">DZIKIR SETELAH SHOLAT</a></li>
+    </ul>
+
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>SIFAT SHOLAT NABI</h1>
+   <center><img src="nabimuhammad.png" width="500" height="300"></center>
+    <p class="penjelasan-justify">
+     <main class="article">
+
+<h1 class="article-title">Rukun Shalat</h1>
+
+<p class="article-subtitle">
+Panduan Fikih Mengenai Bagian Penting dalam Shalat
+</p>
+
+<div class="divider"></div>
+
+<p class="intro">
+Rukun shalat adalah bagian penting dari shalat. Jika rukun shalat tidak ada, shalat tidaklah sah dan tak bisa tergantikan dengan sujud sahwi.
+</p>
+
+<p class="intro">
+Setelah kita mempelajari
+<a href="https://rumaysho.com/shalat/sifat-shalat-nabi-29-mengakhiri-shalat-dengan-salam-10074"
+style="color:#D96A54; text-decoration:none; font-weight:600;">
+sifat shalat nabi sampai serial ke-29
+</a>,
+saat ini dan serial berikutnya akan diulas mengenai shalat dari tinjauan fikih. Kita akan pelajari rukun shalat terlebih dahulu.
+</p>
+
+<div class="note">
+<strong>Yang termasuk dalam rukun shalat:</strong>
+</div>
+
+<!-- 1 -->
+<section class="section">
+<h2>1. Niat di Dalam Hati</h2>
+
+<p>
+Tidak dipersyaratkan niat tersebut dilafazhkan. Dalam hadits disebutkan,
+</p>
+
+<p class="arabic">
+إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ
+</p>
+
+<p class="translation">
+“Sesungguhnya setiap amal itu tergantung dari niatnya.”
+</p>
+
+<p class="source">
+(HR. Bukhari no. 1 dan Muslim no. 1907, dari ‘Umar bin Al Khottob)
+</p>
+</section>
+
+<!-- 2 -->
+<section class="section">
+<h2>2. Berdiri bagi yang Mampu (untuk Shalat Wajib)</h2>
+
+<p>
+Sedangkan shalat sunnah boleh dikerjakan dalam keadaan duduk meskipun mampu.
+</p>
+
+<p>
+Untuk shalat sunnah disunnahkan untuk berdiri, tidak wajib. Namun keadaan berdiri lebih utama daripada duduk saat itu. Nabi <i>shallallahu ‘alaihi wa sallam</i> bersabda,
+</p>
+
+<p class="arabic">
+مَنْ صَلَّى قَائِمًا فَهُوَ أَفْضَلُ وَمَنْ صَلَّى قَاعِدًا فَلَهُ نِصْفُ أَجْرِ القَائِمِ وَمَنْ صَلَّى نَائِمًا فَلَهُ نِصْفُ أَجْرِ القَاعِدِ
+</p>
+
+<p class="translation">
+“Siapa yang mengerjakan shalat sambil berdiri, maka itu lebih afdhal. Siapa yang shalat sambil duduk akan mendapatkan pahala separuh dari shalat sambil berdiri. Siapa yang shalat sambil berbaring akan mendapat pahala separuh dari shalat sambil duduk.”
+</p>
+
+<p class="source">(HR. Bukhari no. 1065)</p>
+</section>
+
+<!-- 3 -->
+<section class="section">
+<h2>3. Takbiratul Ihram</h2>
+
+<p>
+Takbiratul ihram adalah ucapan ‘Allahu Akbar’ di awal shalat.
+</p>
+</section>
+
+<!-- 4 -->
+<section class="section">
+<h2>4. Membaca Al-Fatihah</h2>
+
+<p>
+Membaca surat Al-Fatihah bagi imam dan orang yang shalat sendirian.
+</p>
+</section>
+
+<!-- 5 -->
+<section class="section">
+<h2>5. Ruku’ dan Thuma’ninah</h2>
+
+<p>
+Ruku’ dilakukan dengan thuma’ninah atau tidak tergesa-gesa.
+</p>
+
+<p>
+Dalil yang menunjukkan perintah untuk thuma’ninah dapat dilihat pada hadits <i>musii’ sholatuhu</i> (orang yang jelek shalatnya).
+</p>
+
+<p class="arabic">
+عَنْ أَبِى هُرَيْرَةَ أَنَّ النَّبِىَّ – صلى الله عليه وسلم – دَخَلَ الْمَسْجِدَ فَدَخَلَ رَجُلٌ فَصَلَّى ثُمَّ جَاءَ فَسَلَّمَ عَلَى النَّبِىِّ – صلى الله عليه وسلم – فَرَدَّ النَّبِىُّ – صلى الله عليه وسلم – عَلَيْهِ السَّلاَمَ فَقَالَ « ارْجِعْ فَصَلِّ فَإِنَّكَ لَمْ تُصَلِّ » فَصَلَّى ، ثُمَّ جَاءَ فَسَلَّمَ عَلَى النَّبِىِّ – صلى الله عليه وسلم – فَقَالَ « ارْجِعْ فَصَلِّ فَإِنَّكَ لَمْ تُصَلِّ » . ثَلاَثًا . فَقَالَ وَالَّذِى بَعَثَكَ بِالْحَقِّ فَمَا أُحْسِنُ غَيْرَهُ فَعَلِّمْنِى . قَالَ إِذَا قُمْتَ إِلَى الصَّلاَةِ فَكَبِّرْ ، ثُمَّ اقْرَأْ مَا تَيَسَّرَ مَعَكَ مِنَ الْقُرْآنِ ، ثُمَّ ارْكَعْ حَتَّى تَطْمَئِنَّ رَاكِعًا ، ثُمَّ ارْفَعْ حَتَّى تَعْتَدِلَ قَائِمًا ، ثُمَّ اسْجُدْ حَتَّى تَطْمَئِنَّ سَاجِدًا ، ثُمَّ ارْفَعْ حَتَّى تَطْمَئِنَّ جَالِسًا ، ثُمَّ اسْجُدْ حَتَّى تَطْمَئِنَّ سَاجِدًا ، ثُمَّ افْعَلْ ذَلِكَ فِى صَلاَتِكَ كُلِّهَا
+</p>
+
+<p class="translation">
+Dari Abu Hurairah, Nabi <i>shallallahu ‘alaihi wa sallam</i> ketika masuk masjid, maka masuklah seseorang lalu ia melaksanakan shalat. Setelah itu, ia datang dan memberi salam pada Nabi <i>shallallahu ‘alaihi wa sallam</i>, lalu beliau menjawab salamnya. Beliau berkata, “Ulangilah shalatmu karena sesungguhnya engkau tidaklah shalat.” Lalu ia pun shalat dan datang lalu memberi salam pada Nabi <i>shallallahu ‘alaihi wa sallam</i>. Beliau tetap berkata yang sama seperti sebelumnya, “Ulangilah shalatmu karena sesungguhnya engkau tidaklah shalat.” Sampai diulangi hingga tiga kali.
+</p>
+
+<p class="translation">
+Orang yang jelek shalatnya tersebut berkata, “Demi yang mengutusmu membawa kebenaran, aku tidak bisa melakukan shalat sebaik dari itu. Makanya ajarilah aku!” Rasulullah <i>shallallahu ‘alaihi wa sallam</i> lantas mengajarinya dan bersabda,
+</p>
+
+<p class="translation">
+“Jika engkau hendak shalat, maka bertakbirlah. Kemudian bacalah ayat Al Qur’an yang mudah bagimu. Lalu ruku’lah dan sertai thuma’ninah ketika ruku’. Lalu bangkitlah dan beri’tidallah sambil berdiri. Kemudian sujudlah sertai thuma’ninah ketika sujud. Kemudian bangkitlah dan duduk antara dua sujud sambil thuma’ninah. Kemudian sujud kembali sambil disertai thuma’ninah ketika sujud. Lakukan seperti itu dalam setiap shalatmu.”
+</p>
+
+<p class="source">
+(HR. Bukhari no. 793 dan Muslim no. 397)
+</p>
+</section>
+
+<!-- 6 -->
+<section class="section">
+<h2>6. I’tidal dan Thuma’ninah</h2>
+
+<p>
+I’tidal adalah bangkit dari ruku’ dan kembali berdiri dengan tegak disertai thuma’ninah.
+</p>
+</section>
+
+<!-- 7 -->
+<section class="section">
+<h2>7. Sujud Dua Kali dalam Satu Raka’at</h2>
+
+<p>
+Sujud dilakukan dua kali dalam satu raka’at, disertai thuma’ninah.
+</p>
+</section>
+
+<!-- 8 -->
+<section class="section">
+<h2>8. Duduk di Antara Dua Sujud</h2>
+
+<p>
+Duduk di antara dua sujud dilakukan dengan disertai thuma’ninah.
+</p>
+</section>
+
+<!-- 9 -->
+<section class="section">
+<h2>9. Duduk Tahiyat Akhir</h2>
+
+<p>
+Duduk pada tahiyat akhir merupakan salah satu rukun dalam shalat.
+</p>
+</section>
+
+<!-- 10 -->
+<section class="section">
+<h2>10. Membaca Bacaan Tasyahud di Tahiyat Akhir</h2>
+
+<p>
+Membaca bacaan tasyahud ketika duduk tahiyat akhir.
+</p>
+</section>
+
+<!-- 11 -->
+<section class="section">
+<h2>11. Membaca Shalawat setelah Bacaan Tasyahud Akhir</h2>
+
+<p>
+Membaca bacaan shalawat setelah bacaan tasyahud akhir.
+</p>
+</section>
+
+<!-- 12 -->
+<section class="section">
+<h2>12. Salam Pertama</h2>
+
+<p>
+Salam pertama minimalnya adalah ucapan ‘<i>Assalamu ‘alaikum</i>’, lengkapnya ‘<i>Assalamu ‘alaikum wa rahmatullah</i>’.
+</p>
+</section>
+
+<!-- 13 -->
+<section class="section">
+<h2>13. Berurutan dalam Mengerjakan Rukun</h2>
+
+<p>
+Diharuskan berurutan dalam mengerjakan rukun karena dalam hadits <i>musii’ sholatuhu</i> terdapat kata “tsumma” ketika menjelaskan urutan rukun. Tsumma sendiri berarti kemudian yang menunjukkan makna berurutan. Perhatikan haditsnya,
+</p>
+
+<p class="arabic">
+إِذَا قُمْتَ إِلَى الصَّلاَةِ فَكَبِّرْ ، ثُمَّ اقْرَأْ مَا تَيَسَّرَ مَعَكَ مِنَ الْقُرْآنِ ، ثُمَّ ارْكَعْ حَتَّى تَطْمَئِنَّ رَاكِعًا ، ثُمَّ ارْفَعْ حَتَّى تَعْتَدِلَ قَائِمًا ، ثُمَّ اسْجُدْ حَتَّى تَطْمَئِنَّ سَاجِدًا ، ثُمَّ ارْفَعْ حَتَّى تَطْمَئِنَّ جَالِسًا ، ثُمَّ اسْجُدْ حَتَّى تَطْمَئِنَّ سَاجِدًا ، ثُمَّ افْعَلْ ذَلِكَ فِى صَلاَتِكَ كُلِّهَا
+</p>
+
+<p class="translation">
+“Jika engkau hendak shalat, maka bertakbirlah. Kemudian bacalah ayat Al Qur’an yang mudah bagimu. Lalu ruku’lah dan sertai thuma’ninah ketika ruku’. Lalu bangkitlah dan beri’tidallah sambil berdiri. Kemudian sujudlah sertai thuma’ninah ketika sujud. Kemudian bangkitlah dan duduk antara dua sujud sambil thuma’ninah. Kemudian sujud kembali sambil disertai thuma’ninah ketika sujud. Lakukan seperti itu dalam setiap shalatmu.”
+</p>
+
+<p class="source">
+(HR. Bukhari no. 793 dan Muslim no. 397)
+</p>
+</section>
+
+<div class="divider"></div>
+
+<p class="closing">
+Semoga bermanfaat.
+</p>
+
+</main>
+</body>
+</html>

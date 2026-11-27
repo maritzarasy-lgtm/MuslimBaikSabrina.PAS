@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi MuslimBaik dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color: #ffffff;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #862F1D;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .btn-donasi {
+      background-color: #D96A54;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #D96A54;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color: #EAAB9F;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #862F1D;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #8A94ED;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #862F1D;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #d4af37;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #FEEBE7;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #FEEBE7;
+      color: #FEEBE7;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #D96A54;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #b8962e;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #862F1D;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #862F1D;
+      }
+      .dropdown-menu li a {
+        color: #862F1D;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+	* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+  background: #FAEBE8;
+  color: #3B140D;
+  line-height: 1.8;
+  padding: 25px 15px;
+}
+
+.article {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 45px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(96,34,21,0.10);
+}
+
+h1 {
+  color: #862F1D;
+  text-align: center;
+  font-size: 27px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #AB3C26;
+  margin-bottom: 25px;
+}
+
+.divider {
+  width: 90px;
+  height: 4px;
+  background: #D96A54;
+  margin: 0 auto 30px;
+  border-radius: 10px;
+}
+
+h2 {
+  color: #862F1D;
+  font-size: 20px;
+  border-left: 4px solid #D96A54;
+  padding-left: 12px;
+  margin-top: 35px;
+  margin-bottom: 18px;
+}
+
+p, li {
+  font-size: 15px;
+  text-align: justify;
+  color: #602215;
+  margin-bottom: 15px;
+}
+
+.arabic {
+  direction: rtl;
+  text-align: center;
+  font-family: 'Traditional Arabic', 'Noto Naskh Arabic', serif;
+  font-size: 25px;
+  line-height: 2.2;
+  color: #862F1D;
+  background: #FAEBE8;
+  padding: 22px 18px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.translation {
+  background: #FFF7F5;
+  border-left: 3px solid #E28B79;
+  padding: 16px 20px;
+  border-radius: 5px;
+  font-style: italic;
+}
+
+.source {
+  text-align: center;
+  color: #AB3C26;
+  font-size: 13px;
+}
+
+a {
+  color: #D96A54;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #862F1D;
+  text-decoration: underline;
+}
+
+.note {
+  background: #FAEBE8;
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin: 20px 0;
+}
+
+ol {
+  padding-left: 25px;
+}
+
+li {
+  padding-left: 5px;
+  margin-bottom: 18px;
+}
+
+.closing {
+  text-align: center;
+  color: #862F1D;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+@media(max-width:600px) {
+  .article {
+    padding: 25px 20px;
+  }
+
+  h1 {
+    font-size: 23px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .arabic {
+    font-size: 21px;
+    padding: 16px 12px;
+  }
+}
+</style>
+</head>
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+     <img src="logopink.png" alt="Logo MuslimBaik" class="brand-logo">
+
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">MuslimBaik</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+ 
+	   <!-- Dropdown Kategori -->
+      <li class="nav-item">
+        <a href="#" class="nav-link">Kategori ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">KEUTAMAAN SHOLAT</a></li>
+          <li><a href="#">SIFAT SHOLAT NABI</a></li>
+          <li><a href="#">TATA CARA SHOLAT</a></li>
+          <li><a href="#">12 DOA IFTITAH</a></li>
+          <li><a href="#">DZIKIR SETELAH SHOLAT</a></li>
+       
+        </ul>
+      </li>
+    <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="shalat.html" class="nav-link">Beranda</a></li>
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">KEUTAMAAN SHOLAT</a></li>
+     <li class="nav-item"><a href="sifat.html" class="nav-link">SIFAT SHOLAT NABI</a></li>
+      <li class="nav-item"><a href="tata.html" class="nav-link">TATA CARA SHOLAT</a></li>
+      <li class="nav-item"><a href="12.html" class="nav-link">12 DOA IFTITAH</a></li>
+	  <li class="nav-item"><a href="dzikir.html" class="nav-link">DZIKIR SETELAH SHOLAT</a></li>
+    </ul>
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>TATA CARA SHOLAT SESUAI SUNNAH</h1>
+   <center><img src="tatasholat.png" width="500" height="300"></center>
+    <p class="penjelasan-justify">
+	<body>
+
+<main class="article">
+
+<h1>Fikih Manhajus Salikin</h1>
+
+<p class="subtitle">
+Karya Syaikh ‘Abdurrahman bin Nashir As-Sa’di
+<br><strong>Kitab Shalat</strong>
+</p>
+
+<div class="divider"></div>
+
+<p>
+Syaikh ‘Abdurrahman bin Nashir As-Sa’di <i>rahimahullah</i> berkata dalam kitabnya <i>Manhajus Salikin</i>,
+</p>
+
+<p class="arabic">
+وَالأَرْكَانُ القَوْلِيَّةُ مِنَ المَذْكُوْرَاتِ:
+<br>
+تَكْبِيْرَةُ الإِحْرَامِ وَقِرَاءَةُ الفَاتِحَةِ عَلَى غَيْرِ مَأْمُوْمٍ وَالتَّشَهُّدُ الأَخِيْرِ وَالسَّلاَمُ
+</p>
+
+<p class="translation">
+“Dan rukun berupa ucapan dari cara shalat yang telah disebutkan adalah:
+<a href="https://rumaysho.com/19615-manhajus-salikin-sifat-shalat-nabi-takbiratul-ihram-dan-mengangkat-tangan.html">takbiratul ihram</a>,
+<a href="https://rumaysho.com/12486-hukum-al-fatihah-3-membaca-al-fatihah-termasuk-rukun-shalat.html">membaca Al-Fatihah</a> bagi selain makmum,
+<a href="https://rumaysho.com/22172-manhajus-salikin-tasyahud-akhir.html">tasyahud akhir</a>, dan
+<a href="https://rumaysho.com/22521-manhajus-salikin-menutup-shalat-dengan-salam.html">salam</a>.”
+</p>
+
+<p>
+Syaikh ‘Abdurrahman bin Nashir As-Sa’di <i>rahimahullah</i> melanjutkan,
+</p>
+
+<p class="arabic">
+وَالأَرْكَانُ القَوْلِيَّةُ مِنَ المَذْكُوْرَاتِ:
+<br>
+تَكْبِيْرَةُ الإِحْرَامِ وَقِرَاءَةُ الفَاتِحَةِ عَلَى غَيْرِ مَأْمُوْمٍ وَالتَّشَهُّدُ الأَخِيْرِ وَالسَّلاَمُ
+<br><br>
+وَبَاقِي أَفْعَالِهَا: أَرْكَانٌ فَعِلْيَةٌ, إِلَّا:
+<br>
+اَلتَّشَهُّدَ اَلْأَوَّلَ , فَإِنَّهُ مِنْ وَاجِبَاتِ اَلصَّلَاةِ
+<br>
+وَالتَّكْبِيرَاتِ غَيْرَ تَكْبِيرَةِ اَلْإِحْرَامِ.
+<br>
+و “سُبْحَانَ رَبِّي اَلْأَعْلَى” مَرَّةً فِي اَلسُّجُودِ.
+<br>
+و “رَبِّ اِغْفِرْ لِي” بَيْنَ اَلسَّجْدَتَيْنِ مَرَّةً, مَرَّةً, وَمَا زَادَ فَهُوَ مَسْنُونٌ.
+<br>
+وَقَوْلَ: “سَمِعَ اَللَّهُ لِمَنْ حَمِدَهُ” لِلْإِمَامِ وَالْمُنْفَرِدِ.
+<br>
+و “رَبَّنَا لَكَ اَلْحَمْدُ” لِلْكُلِّ.
+<br>
+فَهَذِهِ اَلْوَاجِبَاتُ تَسْقُطُ بِالسَّهْوِ, وَيَجْبُرُهَا سُجُودُهُ اَلسَّهْوَ, وَكَذَا بِالْجَهْلِ
+<br>
+وَالْأَرْكَانُ لَا تَسْقُطُ سَهْوًا وَلَا جَهْلاً وَلَا عَمْدًا
+</p>
+
+<p class="translation">
+“Dan rukun berupa ucapan dari cara shalat yang telah disebutkan adalah: takbiratul ihram, membaca Al-Fatihah bagi selain makmum, tasyahud akhir, dan salam.
+
+Dan sisa gerakan itu masuk dalam rukun shalat yang berupa perbuatan kecuali:
+</p>
+
+<div class="note">
+<ol>
+<li>Tasyahud awwal, ini termasuk wajib shalat.</li>
+<li>Takbir-takbir dalam shalat kecuali takbiratul ihram.</li>
+<li>Ucapan “SUBHAANA ROBBIYAL A’LAA” sekali ketika sujud.</li>
+<li>Bacaan “ROBBIGH-FIR LII” di antara dua sujud satu kali satu kali; jika ditambah lebih dari itu, maka masuk dalam sunnah shalat.</li>
+<li>Ucapan “SAMI’ALLAHU LIMAN HAMIDAH” bagi imam dan munfarid (orang yang shalat sendirian).</li>
+<li>Ucapan “ROBBANAA LAKAL HAMDU” untuk imam, munfarid, dan makmum.</li>
+</ol>
+</div>
+
+<p class="translation">
+Enam hal di atas masuk dalam wajib shalat. Wajib shalat bisa gugur karena lupa dan ditutup kelupaan tersebut dengan sujud sahwi, begitu pula gugur jika tidak tahu. Sedangkan rukun shalat tidaklah bisa gugur walau seseorang lupa, tidak tahu, atau sengaja.”
+</p>
+
+<h2>Salam dan Takbiratul Ihram Termasuk Rukun Shalat</h2>
+
+<p>
+Dari Abu Sa’id Al-Khudri <i>radhiyallahu ‘anhu</i>, Rasulullah <i>shallallahu ‘alaihi wa sallam</i> bersabda,
+</p>
+
+<p class="arabic">
+مِفْتَاحُ الصَّلاَةِ الطُّهُورُ وَتَحْرِيمُهَا التَّكْبِيرُ وَتَحْلِيلُهَا التَّسْلِيمُ
+</p>
+
+<p class="translation">
+“Pembuka shalat adalah bersuci, yang mengharamkan dari perkara di luar shalat adalah ucapan takbir dan yang menghalalkan kembali adalah ucapan salam.”
+</p>
+
+<p class="source">
+(HR. Tirmidzi, no. 238 dan Ibnu Majah, no. 276. Abu ‘Isa mengatakan bahwa hadits ini hasan. Syaikh Al-Albani mengatakan bahwa hadits ini sahih).
+</p>
+
+<p>
+<strong>Baca Juga:</strong>
+<a href="https://rumaysho.com/19615-manhajus-salikin-sifat-shalat-nabi-takbiratul-ihram-dan-mengangkat-tangan.html">
+Manhajus Salikin: Sifat Shalat Nabi, Takbiratul Ihram dan Mengangkat Tangan
+</a>
+</p>
+
+<h2>Tasyahud Akhir Yang Setelah Itu Salam Termasuk Rukun Shalat</h2>
+
+<p>
+Dari ‘Abdullah bin Mas’ud <i>radhiyallahu ‘anhu</i>, ia berkata,
+</p>
+
+<p class="arabic">
+كُنَّا إِذَا صَلَّيْنَا مَعَ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ قُلْنَا: السَّلَامُ علَى اللَّهِ قَبْلَ عِبَادِهِ، السَّلَامُ علَى جِبْرِيلَ، السَّلَامُ علَى مِيكَائِيلَ، السَّلَامُ علَى فُلَانٍ وفُلَانٍ، فَلَمَّا انْصَرَفَ النبيُّ صَلَّى اللهُ عليه وسلَّمَ، أقْبَلَ عَلَيْنَا بوَجْهِهِ، فَقالَ : إنَّ اللَّهَ هو السَّلَامُ، فَإِذَا جَلَسَ أحَدُكُمْ في الصَّلَاةِ فَلْيَقُلْ: التَّحِيَّاتُ لِلَّهِ، والصَّلَوَاتُ، والطَّيِّبَاتُ، السَّلَامُ عَلَيْكَ أيُّها النبيُّ ورَحْمَةُ اللَّهِ وبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وعلَى عِبَادِ اللَّهِ الصَّالِحِينَ، فإنَّه إذَا قالَ ذلكَ أصَابَ كُلَّ عَبْدٍ صَالِحٍ في السَّمَاءِ والأرْضِ، أشْهَدُ أنْ لا إلَهَ إلَّا اللَّهُ، وأَشْهَدُ أنَّ مُحَمَّدًا عَبْدُهُ ورَسولُهُ، ثُمَّ يَتَخَيَّرْ بَعْدُ مِنَ الكَلَامِ ما شَاءَ
+</p>
+
+<p class="translation">
+“Jika shalat bersama Nabi <i>shallallahu ‘alaihi wa sallam</i>, kami mengucapkan salam kepada Allah sebelum salam kepada para hamba-Nya, lalu salam kepada Jibril, salam kepada Mikail, salam kepada fulan dan fulan. Ketika Nabi <i>shallallahu ‘alaihi wa sallam</i> selesai beliau lantas menghadap kami dengan wajahnya, lantas beliau berkata, ‘Sesungguhnya Allah itu As-Salaam (Yang Memberi Keselematan). Jika salah seorang di antara kalian duduk, maka ucapkanlah:
+<br><br>
+AT-TAHIYAATU LILLAH, WASH-SHOLAWAAT, WATH-THOYYIBAAT, ASSALAAMU ‘ALAIKA AYYUHAN NABIYYU WA ROHMATULLAHI WA BAROKAATUH, ASSALAAMU ‘ALAINAA WA ‘ALA ‘IBAADILLAHISH SHOLIHIIN.
+<br><br>
+Jika engkau membaca seperti itu, maka setiap hamba Allah yang saleh di langit dan di bumi akan mendapatkan doa kebaikan tersebut. Lalu mengucapkan:
+<br><br>
+ASY-HADU ALLA ILAAHA ILLALLAH, WA ASYHADU ANNA MUHAMMADAN ‘ABDUHU WA ROSUULUH.
+<br><br>
+Lalu silakan pilih kalimat setelah itu yang mau diucapkan.”
+</p>
+
+<p class="source">
+(HR. Bukhari, no. 6230). Kalimat perintah membaca tasyahud di sini menunjukkan akan wajibnya. Sedangkan tasyahud awal tidaklah masuk dalam rukun shalat.
+</p>
+
+<p>
+<strong>Baca Juga:</strong>
+<a href="https://rumaysho.com/22521-manhajus-salikin-menutup-shalat-dengan-salam.html">
+Manhajus Salikin: Menutup Shalat dengan Salam
+</a>
+</p>
+
+<h2>Hukum Membaca Al-Fatihah untuk Makmum</h2>
+
+<p>
+Membaca Al-Fatihah di sini berlaku bagi imam dan orang yang shalat sendirian. Sedangkan makmum dalam shalat jahriyah (Maghrib, Isya dan Shubuh) tidak membaca Al-Fatihah, ia cukup mendengarkan, inilah pendapat yang lebih kuat. Karena Allah Ta’ala memerintahkan,
+</p>
+
+<p class="arabic">
+وَإِذَا قُرِئَ الْقُرْآَنُ فَاسْتَمِعُوا لَهُ وَأَنْصِتُوا لَعَلَّكُمْ تُرْحَمُونَ
+</p>
+
+<p class="translation">
+“Dan apabila dibacakan Al-Quran, maka dengarkanlah baik-baik, dan perhatikanlah dengan tenang agar kamu mendapat rahmat.”
+</p>
+
+<p class="source">(QS. Al-A’raf: 204).</p>
+
+<p>
+Abu Hurairah <i>radhiyallahu ‘anhu</i> berkata,
+</p>
+
+<p class="arabic">
+صَلَّى النَّبِىُّ -صلى الله عليه وسلم- بِأَصْحَابِهِ صَلاَةً نَظُنُّ أَنَّهَا الصُّبْحُ فَقَالَ هَلْ قَرَأَ مِنْكُمْ مِنْ أَحَدٍ. قَالَ رَجُلٌ أَنَا. قَالَ إِنِّى أَقُولُ مَا لِى أُنَازَعُ الْقُرْآنَ.
+</p>
+
+<p class="translation">
+“Nabi <i>shallallahu ‘alaihi wa sallam</i> shalat bersama para sahabatnya yang kami mengira bahwa itu adalah shalat Shubuh. Beliau bersabda, ‘Apakah salah seorang dari kalian ada yang membaca surah (di belakangku)?’ Seorang laki-laki menjawab, ‘Saya.’ Beliau lalu bersabda, ‘Kenapa aku ditandingi dalam membaca Al-Quran?’”
+</p>
+
+<p class="source">
+(HR. Abu Daud, no. 826 dan Tirmidzi, no. 312. Al-Hafizh Abu Thahir mengatakan bahwa hadits ini shahih).
+</p>
+
+<p>
+Ibnu Mas’ud <i>radhiyallahu ‘anhu</i> berkata,
+</p>
+
+<p class="arabic">
+أَنْصِتْ لِلْقُرْآنِ فَإِنْ فِي الصَّلاةِ شُغْلا، وَسَيَكْفِيكَ ذَلِكَ الإِمَامُ
+</p>
+
+<p class="translation">
+“Diamlah saat imam membaca Al-Quran karena dalam shalat itu begitu sibuk. Cukup bagimu apa yang dibaca oleh imam.”
+</p>
+
+<p class="source">(HR. Ath-Thabrani, 9:264)</p>
+
+<p>
+Ibnu ‘Umar <i>radhiyallahu ‘anhuma</i> berkata,
+</p>
+
+<p class="arabic">
+يَنْصِتُ لِلْإِمَامِ فِيْمَا يَجْهَرُ بِهِ فِي الصَّلاَةِ وَلاَ يَقْرَأُ مَعَهُ
+</p>
+
+<p class="translation">
+“Hendaklah diam ketika imam mengeraskan bacaannya dalam shalat. Dan janganlah baca bersamanya.”
+</p>
+
+<p class="source">(HR. Abdur Razaq, 2:139).</p>
+
+<p>
+<strong>Baca Juga:</strong>
+<a href="https://rumaysho.com/12492-hukum-al-fatihah-4-membaca-al-fatihah-di-belakang-imam.html">
+Hukum Al-Fatihah (4): Membaca Al-Fatihah di Belakang Imam
+</a>
+</p>
+
+<h2>Rukun Shalat Berupa Perbuatan (Gerakan)</h2>
+
+<ol>
+<li>
+Berdiri bagi yang mampu untuk shalat wajib. Sedangkan untuk shalat sunnah, untuk berdirinya dihukumi sunnah. ‘Ali Al-Qari mengatakan, “Boleh shalat sunnah dilakukan dalam keadaan duduk padahal mampu berdiri. Ini dibolehkan dengan ijmak (kata sepakat ulama). Namun orang yang mampu berdiri dan tidak ada uzur lantas memilih shalat sunnah dalam keadaan duduk, maka pahalanya separuh dari yang berdiri.” (<i>Jam’u Ar-Rasail fi Syarh Asy-Syamail</i>, 2:99. Dinukil dari <i>Ghayah Al-Muqtashidin Syarh Manhaj As-Salikin</i>, 1:254)
+</li>
+
+<li>
+Rukuk, karena berdasarkan hadits musii’ fii shalatihi dan dikatakan wajib berdasarkan ijmak. Sedangkan rukuk kedua untuk shalat gerhana (dalam satu rakaat) dihukumi sunnah (tidak wajib).
+</li>
+
+<li>
+Berdiri untuk iktidal, wajibnya juga berdasarkan hadits musii’ fii shalatihi.
+</li>
+
+<li>
+Sujud, wajibnya juga berdasarkan hadits musii’ fii shalatihi dan ada ijmak tentang hal ini.
+</li>
+
+<li>
+Duduk antara dua sujud, juga berdasarkan hadits musii’ fii shalatihi.
+</li>
+
+<li>
+Duduk tasyahud akhir karena duduk di sini adalah tempat untuk rukun tasyahudnya.
+</li>
+
+<li>
+Tertib (berurutan), karena Nabi <i>shallallahu ‘alaihi wa sallam</i> melakukan rukun-rukun ini secara berurutan, juga ditegaskan dalam hadits musii’ fii shalatihi dengan kata “tsumma (arti: kemudian)”, lalu ada ijmak dalam hal ini.
+</li>
+
+<li>
+Thumakninah ketika rukuk, bangkit dari rukuk, sujud, duduk antara dua sujud karena Nabi <i>shallallahu ‘alaihi wa sallam</i> memerintahkan pada orang yang jelek shalatnya demikian. Standar minimal thumakninah yaitu keadaan tenang dan membedakan antara berpindah dan rukun.
+</li>
+</ol>
+
+<div class="divider"></div>
+
+<div class="note">
+<p style="text-align:center; margin:0; font-weight:bold; color:#862F1D;">
+Kesimpulan rukun shalat berupa ucapan dan perbuatan berarti ada dua belas.
+</p>
+</div>
+
+</main>
+</body>
+</html>
